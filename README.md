@@ -2,7 +2,7 @@
 
 Dockerized Self-hosted runner for GitHub Actions.
 
-This Project is inspired by [GitHub Blog: Self-hosted runners for GitHub Actions is now in beta](https://github.blog/2019-11-05-self-hosted-runners-for-github-actions-is-now-in-beta/).
+This repository is inspired by [GitHub Blog: Self-hosted runners for GitHub Actions is now in beta](https://github.blog/2019-11-05-self-hosted-runners-for-github-actions-is-now-in-beta/).
 
 ## Python
 
