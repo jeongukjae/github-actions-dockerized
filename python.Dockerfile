@@ -12,6 +12,8 @@ RUN tar xzf ./actions-runner-linux-x64-${ACTIONS_RUNNER_VERSION}.tar.gz && rm ac
 
 ENV REPOSITORY=
 ENV TOKEN=
+ENV NAME=
+ENV WORKDIR=
 
 ADD entrypoint.sh entrypoint.sh
 ENTRYPOINT [ "./entrypoint.sh" ]

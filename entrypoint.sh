@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
-./config.sh --url https://github.com/$REPOSITORY --token $TOKEN
+echo "$NAME\n$WORKDIR" | ./config.sh --url https://github.com/$REPOSITORY --token $TOKEN
 
 $@
