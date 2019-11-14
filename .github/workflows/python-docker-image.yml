@@ -1,0 +1,20 @@
+name: Python Docker Image CI
+
+on: [push]
+
+jobs:
+
+  build:
+    name: Build Image for Python ${{ matrix.python_version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python_version: [3.6, 3.7, 3.8, latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build Python Docker Image and Push to GitHub Packages
+      run: |
+        docker build . --file python.Dockerfile --tag docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}
+        docker login docker.pkg.github.com --username jeongukjae -p ${{ secrets.ACCESS_TOKEN }}
+        docker push docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}
