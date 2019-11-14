@@ -6,6 +6,8 @@ This Project is inspired by [GitHub Blog: Self-hosted runners for GitHub Actions
 
 ## Python
 
+### Usage
+
 ```sh
 docker pull docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:latest-2.160.2
 docker run \
@@ -25,3 +27,17 @@ docker run \
   -eTOKEN=AKDIG..................... \
   docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:latest-2.160.2
 ```
+
+### Image Name & Tags
+
+format: `docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${PYTHON_VERSION}-${ACTIONS_RUNNER_VERSION}`
+
+Available `PYTHON_VERSION`:
+
+* 3.6
+* 3.7
+* 3.8
+
+Available `ACTIONS_RUNNER_VERSION`:
+
+* 2.160.2
