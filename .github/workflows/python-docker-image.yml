@@ -10,11 +10,16 @@ jobs:
     strategy:
       matrix:
         python_version: [3.6, 3.7, 3.8, latest]
+        action_runner_version: [2.160.2]
 
     steps:
     - uses: actions/checkout@v1
     - name: Build Python Docker Image and Push to GitHub Packages
       run: |
-        docker build . --file python.Dockerfile --tag docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}
+        docker build . \
+          --file python.Dockerfile \
+          --build-arg BASE_IMAGE=python:${{ matrix.python_version }} \
+          --build-arg ACTIONS_RUNNER_VERSION=${{ matrix.action_runner_version }} \
+          --tag docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}-${{ matrix.action_runner_version }}
         docker login docker.pkg.github.com --username jeongukjae -p ${{ secrets.ACCESS_TOKEN }}
-        docker push docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}
+        docker push docker.pkg.github.com/jeongukjae/github-actions-dockerized/python:${{ matrix.python_version }}-${{ matrix.action_runner_version }}
